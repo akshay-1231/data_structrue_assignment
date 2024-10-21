@@ -1,0 +1,220 @@
+A) Write a menu driven program for singly linked list-
+-	To create linked list.
+-	To display linked list
+-	To search node in linked list.
+-	Insert at last position
+
+package data_structure_assignment;
+
+import datastructure.Node;
+
+public class LinkedList {
+	 int data;
+	    Node next;
+
+	    LinkedList(int data) {
+	        this.data = data;
+	        this.next = null;
+	    }
+	}
+
+	class SinglyLinkedList {
+	    Node head;
+
+	    // Create a new node and add it to the end of the list
+	    public void create(int data) {
+	        Node newNode = new Node(data);
+	        if (head == null) {
+	            head = newNode;
+	        } else {
+	            Node current = head;
+	            while (current.next != null) {
+	                current = current.next;
+	            }
+	            current.next = newNode;
+	        }
+	    }
+
+	    // Display the linked list
+	    public void display() {
+	        if (head == null) {
+	            System.out.println("List is empty.");
+	            return;
+	        }
+	        Node current = head;
+	        while (current != null) {
+	            System.out.print(current.data + " -> ");
+	            current = current.next;
+	        }
+	        System.out.println("null");
+	    }
+
+	    // Search for a node in the linked list
+	    public void search(int key) {
+	        Node current = head;
+	        while (current != null) {
+	            if (current.data == key) {
+	                System.out.println("Node with data " + key + " found.");
+	                return;
+	            }
+	            current = current.next;
+	        }
+	        System.out.println("Node with data " + key + " not found.");
+	    }
+
+	    // Insert a node at the end of the list
+	    public void insertAtEnd(int data) {
+	        Node newNode = new Node(data);
+	        if (head == null) {
+	            head = newNode;
+	            return;
+	        }
+	        Node current = head;
+	        while (current.next != null) {
+	            current = current.next;
+	        }
+	        current.next = newNode;
+	    }
+	}
+
+package data_structure_assignment;
+
+import java.util.Scanner;
+
+public class Linked_List_Main {
+	public static void main(String[] args) {
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Create linked list");
+            System.out.println("2. Display linked list");
+            System.out.println("3. Search node in linked list");
+            System.out.println("4. Insert at last position");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter data to create node: ");
+                    int data = scanner.nextInt();
+                    linkedList.create(data);
+                    System.out.println("Node with data " + data + " created.");
+                    break;
+
+                case 2:
+                    System.out.println("Displaying linked list:");
+                    linkedList.display();
+                    break;
+
+                case 3:
+                    System.out.print("Enter data to search: ");
+                    int key = scanner.nextInt();
+                    linkedList.search(key);
+                    break;
+
+                case 4:
+                    System.out.print("Enter data to insert at last position: ");
+                    int newData = scanner.nextInt();
+                    linkedList.insertAtEnd(newData);
+                    System.out.println("Node with data " + newData + " inserted at the end.");
+                    break;
+
+                case 5:
+                    System.out.println("Exiting program.");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+B) Write a  program to create doubly link list and display nodes having odd value.
+package data_structure_assignment;
+
+public class Node {
+	
+	    int data;
+	    Node next;
+	    Node prev;
+
+	    Node(int data) {
+	        this.data = data;
+	        this.next = null;
+	        this.prev = null;
+	    }
+	}
+
+package data_structure_assignment;
+
+public class Doubly_Linked_List {
+	  Node head;
+
+	 
+	    public void add(int data) {
+	        Node newNode = new Node(data);
+	        if (head == null) {
+	            head = newNode;
+	        } else {
+	            Node current = head;
+	            while (current.next != null) {
+	                current = current.next;
+	            }
+	            current.next = newNode;
+	            newNode.prev = current;
+	        }
+	    }
+	    
+	    public void displayOddValues() {
+	        if (head == null) {
+	            System.out.println("List is empty.");
+	            return;
+	        }
+	        Node current = head;
+	        boolean hasOdd = false;
+	        System.out.println("Odd value nodes are :");
+	        while (current != null) {
+	            if (current.data % 2 != 0) {
+	                System.out.print(current.data + " ");
+	                hasOdd = true;
+	            }
+	            current = current.next;
+	        }
+	        if (!hasOdd) {
+	            System.out.println("No odd valued nodes found.");
+	        } else {
+	            System.out.println(); 
+	        }
+	    }
+	}
+
+
+package data_structure_assignment;
+
+public class Doubly_linked_Main {
+
+	public static void main(String[] args) {
+		 Doubly_Linked_List	 dll = new  Doubly_Linked_List();
+	        
+	   
+	        dll.add(10);
+	        dll.add(11);
+	        dll.add(34);
+	        dll.add(43);
+	        dll.add(50);
+	        
+	      
+	        dll.displayOddValues();
+	    
+
+	}
+
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	
+	 
